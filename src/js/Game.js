@@ -7,6 +7,9 @@ import blueCardsData from '../js/data/mythicCards/blue/index.js'
 export default class Game {
 
   constructor() {
+    this.allMarksFirstStageArr = document.querySelectorAll('.mark-first-stage')
+    this.allMarksSecondStageArr = document.querySelectorAll('.mark-second-stage')
+    this.allMarksThirdStageArr = document.querySelectorAll('.mark-third-stage')
     this.numBckgr = 0;
   }
   
@@ -109,7 +112,6 @@ export default class Game {
         this.colorCardsArr = [];
   
         for (let indexColor = 0; indexColor < 3; indexColor++) {
-          // first stage - green cards
           if (indexColor === 0) {
             this.colorCards = 'greenCards'
           } else if (indexColor === 1) {
@@ -148,6 +150,7 @@ export default class Game {
     this.setAmountCards()
     this.setBckgrClosedCard();
     this.highlightEndedStage();
+    window.app.view.showGameBlock();
   }
 
   setBckgrOpenCard() {
@@ -180,9 +183,9 @@ export default class Game {
 
   setBckgrClosedCard() {
     if (this.numBckgr >= this.allCardsArr.length - 1) {
-      window.app.view.cardsClosed.classList.add('cards-closed_unable')
+      window.app.view.cardsClosed.classList.add('cards-closed_disabled')
     } else {
-      window.app.view.cardsClosed.classList.remove('cards-closed_unable')
+      window.app.view.cardsClosed.classList.remove('cards-closed_disabled')
     }
   }
 
@@ -234,20 +237,26 @@ export default class Game {
     // first stage
     if (+window.app.view.markBlockBlueFirstSt.textContent === 0 && +window.app.view.markBlockGreenFirstSt.textContent === 0 && +window.app.view.markBlockBrownFirstSt.textContent === 0) {
       window.app.view.titleFirstStageAmount.classList.add('stage-ended')
+      this.allMarksFirstStageArr.forEach((item) => {item.classList.add('marks_ended')})
     } else if (window.app.view.markBlockBlueFirstSt.textContent > 0 || window.app.view.markBlockGreenFirstSt.textContent > 0 || window.app.view.markBlockBrownFirstSt.textContent > 0) {
       window.app.view.titleFirstStageAmount.classList.remove('stage-ended')
+      this.allMarksFirstStageArr.forEach((item) => {item.classList.remove('marks_ended')})
     }
     // second stage
     if (+window.app.view.markBlockBlueSecondSt.textContent === 0 && +window.app.view.markBlockGreenSecondSt.textContent === 0 && +window.app.view.markBlockBrownSecondSt.textContent === 0) {
       window.app.view.titleSecondStageAmount.classList.add('stage-ended')
+      this.allMarksSecondStageArr.forEach((item) => {item.classList.add('marks_ended')})
     } else if (window.app.view.markBlockBlueSecondSt.textContent > 0 || window.app.view.markBlockGreenSecondSt.textContent > 0 || window.app.view.markBlockBrownSecondSt.textContent > 0) {
       window.app.view.titleSecondStageAmount.classList.remove('stage-ended')
+      this.allMarksSecondStageArr.forEach((item) => {item.classList.remove('marks_ended')})
     }
     // third stage
     if (+window.app.view.markBlockBlueThirdSt.textContent === 0 && +window.app.view.markBlockGreenThirdSt.textContent === 0 && +window.app.view.markBlockBrownThirdSt.textContent === 0) {
       window.app.view.titleThirdStageAmount.classList.add('stage-ended')
+      this.allMarksThirdStageArr.forEach((item) => {item.classList.add('marks_ended')})
     } else if (window.app.view.markBlockBlueThirdSt.textContent > 0 || window.app.view.markBlockGreenThirdSt.textContent > 0 || window.app.view.markBlockBrownThirdSt.textContent > 0) {
       window.app.view.titleThirdStageAmount.classList.remove('stage-ended')
+      this.allMarksThirdStageArr.forEach((item) => {item.classList.remove('marks_ended')})
     }
   }
 }

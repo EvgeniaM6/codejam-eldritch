@@ -7,6 +7,9 @@
 .body {
   width: 100vw;
   height: 100vh;
+  font-family: "Cormorant Infant", serif;
+  font-weight: 400;
+  font-size: 22px;
 }
 
 .app {
@@ -39,25 +42,35 @@
 }
 
 .ancients {
+  position: relative;
   width: 200px;
   height: 260px;
   border-radius: 10px;
   margin-right: 20px;
   box-sizing: content-box;
   cursor: pointer;
-  transition: all .5s ease-in-out;
+  transition: all .2s ease-in-out;
   border: 7px solid transparentize($color: #fff, $amount: 0.5);
-
+  
   &:last-child {
     margin-right: 0;
   }
-
+  
   &:hover {
+    border: 7px solid transparentize($color: #fff, $amount: 0.3);
+  }
+
+  &_active {
     transform: scale(2) translateY(25%);
+    z-index: 1;
   }
 
   &_selected {
     border: 7px solid transparentize($color: #ff0000, $amount: 0.5);
+    
+    &:hover {
+      border: 7px solid transparentize($color: #ff0000, $amount: 0.3);
+    }
   }
 }
 
@@ -82,6 +95,29 @@
   background-repeat: no-repeat;
 }
 
+.button-ancient {
+  position: absolute;
+  right: 0;
+  width: 35px;
+  height: 35px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url(../assets/svg/open.svg);
+  opacity: .8;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  
+  &:hover {
+    opacity: 1;
+  }
+
+  &_close {
+    background-image: url(../assets/svg/close.svg);
+  }
+}
+
+
 // difficulties block
 
 .difficulties-block {
@@ -91,10 +127,17 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  transition: all .2s ease-in-out;
+  opacity: 1;
+  pointer-events: all;
+
+  &_disabled {
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
 .difficulties {
-  // box-sizing: content-box;
   width: 180px;
   height: 44px;
   border-radius: 20px;
@@ -109,16 +152,31 @@
 
   &:hover {
     color: #fff;
-    border: 5px solid transparentize($color: #ff0000, $amount: 0.6);
+    border: 5px solid transparentize($color: #fff, $amount: 0.5);
   }
   
   &_selected {
     color: #fff;
     border: 5px solid transparentize($color: #ff0000, $amount: 0.5);
+
+    &:hover {
+      border: 5px solid transparentize($color: #ff0000, $amount: 0.3);
+    }
   }
 }
 
 // button block
+
+.button-block {
+  transition: all .2s ease-in-out;
+  opacity: 1;
+  pointer-events: all;
+
+  &_disabled {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
 
 .button-mix {
   width: 250px;
@@ -143,6 +201,14 @@
 
 .game-block {
   padding-bottom: 20px;
+  transition: all .2s ease-in-out;
+  opacity: 1;
+  pointer-events: all;
+
+  &_disabled {
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
 .cards-block {
@@ -176,7 +242,8 @@
 }
 
 .stage-ended {
-  color: #6b002e;
+  opacity: .4;
+  
 }
 
 .mark-block {
@@ -192,9 +259,14 @@
   justify-content: center;
   align-items: center;
   font-size: 24px;
+  transition: all .2s ease-in-out;
 
   &:last-child {
     margin-right: 0;
+  }
+
+  &_ended {
+    opacity: .4;
   }
 }
 
@@ -235,7 +307,7 @@
     border: 7px solid transparentize($color: #fff, $amount: 0);
   }
 
-  &_unable {
+  &_disabled {
     opacity: 0;
     pointer-events: none;
   }
@@ -244,11 +316,10 @@
 .cards-open {
   width: 355px;
   height: 520px;
-  // background-image: none;
-  // background-image: url(../assets/MythicCards/blue/blue1.png);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 30px;
+  transition: all .2s ease-in-out;
 }
 

@@ -1,0 +1,325 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.body {
+  width: 100vw;
+  height: 100vh;
+  font-family: "Cormorant Infant", serif;
+  font-weight: 400;
+  font-size: 22px;
+}
+
+.app {
+  height: 100%;
+  background: url(../assets/home.png) center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// settings block
+
+.settings-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+}
+
+// ancients block
+
+.ancients-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 100px;
+}
+
+.ancients {
+  position: relative;
+  width: 200px;
+  height: 260px;
+  border-radius: 10px;
+  margin-right: 20px;
+  box-sizing: content-box;
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+  border: 7px solid transparentize($color: #fff, $amount: 0.5);
+  
+  &:last-child {
+    margin-right: 0;
+  }
+  
+  &:hover {
+    border: 7px solid transparentize($color: #fff, $amount: 0.3);
+  }
+
+  &_active {
+    transform: scale(2) translateY(25%);
+    z-index: 1;
+  }
+
+  &_selected {
+    border: 7px solid transparentize($color: #ff0000, $amount: 0.5);
+    
+    &:hover {
+      border: 7px solid transparentize($color: #ff0000, $amount: 0.3);
+    }
+  }
+}
+
+.ancient-first {
+  background: url(../assets/Ancients/Azathoth.png) center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.ancient-second {
+  background: url(../assets/Ancients/Cthulthu.png) center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.ancient-third {
+  background: url(../assets/Ancients/IogSothoth.png) center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.ancient-fourth {
+  background: url(../assets/Ancients/ShubNiggurath.png) center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.button-ancient {
+  position: absolute;
+  right: 0;
+  width: 35px;
+  height: 35px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url(../assets/svg/open.svg);
+  opacity: .8;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  
+  &:hover {
+    opacity: 1;
+  }
+
+  &_close {
+    background-image: url(../assets/svg/close.svg);
+  }
+}
+
+
+// difficulties block
+
+.difficulties-block {
+  height: 100%;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  transition: all .2s ease-in-out;
+  opacity: 1;
+  pointer-events: all;
+
+  &_disabled {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.difficulties {
+  width: 180px;
+  height: 44px;
+  border-radius: 20px;
+  background: transparentize($color: #42006b, $amount: 0.5);
+  color: transparentize($color: #fff, $amount: 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 5px solid transparentize($color: #fff, $amount: 0.8);
+  transition: all .1s ease-in-out;
+
+  &:hover {
+    color: #fff;
+    border: 5px solid transparentize($color: #fff, $amount: 0.5);
+  }
+  
+  &_selected {
+    color: #fff;
+    border: 5px solid transparentize($color: #ff0000, $amount: 0.5);
+
+    &:hover {
+      border: 5px solid transparentize($color: #ff0000, $amount: 0.3);
+    }
+  }
+}
+
+// button block
+
+.button-block {
+  transition: all .2s ease-in-out;
+  opacity: 1;
+  pointer-events: all;
+
+  &_disabled {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.button-mix {
+  width: 250px;
+  height: 60px;
+  border-radius: 20px;
+  background: transparentize($color: #6b002e, $amount: 0.5);
+  color: transparentize($color: #fff, $amount: 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 5px solid transparentize($color: #fff, $amount: 0.8);
+  transition: all .1s ease-in-out;
+
+  &:hover {
+    color: #fff;
+    border: 5px solid transparentize($color: #fff, $amount: 0.4);
+  }
+}
+
+// game block
+
+.game-block {
+  padding-bottom: 20px;
+  transition: all .2s ease-in-out;
+  opacity: 1;
+  pointer-events: all;
+
+  &_disabled {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.cards-block {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.amount-cards {
+  color: #fff;
+  background: transparentize($color: #42006b, $amount: .6);
+  padding: 30px;
+  margin-right: 200px;
+  border-radius: 20px;
+}
+
+.amount {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.title-amount {
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.stage-ended {
+  opacity: .4;
+  
+}
+
+.mark-block {
+  display: flex;
+}
+
+.marks {
+  width: 60px;
+  height: 40px;
+  border: 1px solid #fff;
+  margin-right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  transition: all .2s ease-in-out;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &_ended {
+    opacity: .4;
+  }
+}
+
+.mark-green {
+  background: rgb(0, 73, 9);
+}
+
+.mark-brown {
+  background: rgb(92, 29, 0)
+}
+
+.mark-blue {
+  background: rgb(0, 0, 77);
+}
+
+.cards {
+  display: flex;
+  align-items: center;
+}
+
+.cards-closed {
+  width: 100px;
+  height: 141px;
+  background-image: url(../assets/mythicCardBackground.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-right: 100px;
+  border-radius: 20px;
+  border: 7px solid transparentize($color: #fff, $amount: 0.5);
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+  opacity: 1;
+  pointer-events: all;
+
+  &:hover {
+    transform: scale(1.1);
+    border: 7px solid transparentize($color: #fff, $amount: 0);
+  }
+
+  &_disabled {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.cards-open {
+  width: 355px;
+  height: 520px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 30px;
+  transition: all .2s ease-in-out;
+}
+
